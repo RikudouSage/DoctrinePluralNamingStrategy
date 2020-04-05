@@ -1,0 +1,5 @@
+services:
+  rikudou.naming_strategy.plural_naming_strategy:
+    class: Rikudou\DoctrinePluralNamingStrategy\PluralNamingStrategy
+    arguments:
+      - '@doctrine.orm.naming_strategy.underscore'

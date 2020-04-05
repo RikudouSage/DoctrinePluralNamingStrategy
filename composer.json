@@ -1,0 +1,30 @@
+{
+    "name": "rikudou/doctrine-plural-naming",
+    "description": "Plural underscore naming strategy for Doctrine and Symfony",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dominik Chrastecky",
+            "email": "dominik@chrastecky.cz"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "symfony/framework-bundle": ">=4.4",
+        "php": "^7.2",
+        "symfony/yaml": ">=4.4",
+        "doctrine/orm": "^2.7",
+        "symfony/inflector": ">=4.4"
+    },
+    "config": {
+        "platform": {
+            "php": "7.2"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Rikudou\\DoctrinePluralNamingStrategy\\": "src/"
+        }
+    }
+}
