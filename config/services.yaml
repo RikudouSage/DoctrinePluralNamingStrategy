@@ -1,5 +1,8 @@
 services:
+  rikudou.internal.naming_strategy.english_inflector:
+    class: Symfony\Component\String\Inflector\EnglishInflector
+
   rikudou.naming_strategy.plural_naming_strategy:
     class: Rikudou\DoctrinePluralNamingStrategy\PluralNamingStrategy
     arguments:
-      - '@doctrine.orm.naming_strategy.underscore'
+      - '@doctrine.orm.naming_strategy.underscore_number_aware'

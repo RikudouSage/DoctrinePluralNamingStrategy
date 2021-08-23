@@ -4,7 +4,7 @@ namespace Rikudou\DoctrinePluralNamingStrategy;
 
 use Doctrine\ORM\Mapping\NamingStrategy;
 use Doctrine\ORM\Mapping\UnderscoreNamingStrategy;
-use Symfony\Component\Inflector\Inflector;
+use Symfony\Component\String\Inflector\InflectorInterface;
 
 final class PluralNamingStrategy implements NamingStrategy
 {
@@ -13,9 +13,15 @@ final class PluralNamingStrategy implements NamingStrategy
      */
     private $original;
 
-    public function __construct(UnderscoreNamingStrategy $original)
+    /**
+     * @var InflectorInterface
+     */
+    private $inflector;
+
+    public function __construct(UnderscoreNamingStrategy $original, InflectorInterface $inflector)
     {
         $this->original = $original;
+        $this->inflector = $inflector;
     }
 
     /**
@@ -24,12 +30,7 @@ final class PluralNamingStrategy implements NamingStrategy
     function classToTableName($className)
     {
         $original = $this->original->classToTableName($className);
-        $pluralized = Inflector::pluralize($original);
-        if (is_array($pluralized)) {
-            $pluralized = $pluralized[0];
-        }
-
-        return $pluralized;
+        return $this->inflector->pluralize($original)[0];
     }
 
     /**
