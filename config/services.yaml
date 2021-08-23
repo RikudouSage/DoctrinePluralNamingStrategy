@@ -6,3 +6,4 @@ services:
     class: Rikudou\DoctrinePluralNamingStrategy\PluralNamingStrategy
     arguments:
       - '@doctrine.orm.naming_strategy.underscore_number_aware'
+      - '@rikudou.internal.naming_strategy.english_inflector'
