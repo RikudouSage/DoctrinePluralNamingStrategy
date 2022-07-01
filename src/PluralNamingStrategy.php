@@ -27,7 +27,7 @@ final class PluralNamingStrategy implements NamingStrategy
     /**
      * @inheritDoc
      */
-    function classToTableName($className)
+    function classToTableName($className): string
     {
         $original = $this->original->classToTableName($className);
         return $this->inflector->pluralize($original)[0];
@@ -36,7 +36,7 @@ final class PluralNamingStrategy implements NamingStrategy
     /**
      * @inheritDoc
      */
-    function propertyToColumnName($propertyName, $className = null)
+    function propertyToColumnName($propertyName, $className = null): string
     {
         return $this->original->propertyToColumnName($propertyName, $className);
     }
@@ -44,7 +44,7 @@ final class PluralNamingStrategy implements NamingStrategy
     /**
      * @inheritDoc
      */
-    function embeddedFieldToColumnName($propertyName, $embeddedColumnName, $className = null, $embeddedClassName = null)
+    function embeddedFieldToColumnName($propertyName, $embeddedColumnName, $className = null, $embeddedClassName = null): string
     {
         return $this->original->embeddedFieldToColumnName($propertyName, $embeddedColumnName, $className, $embeddedClassName);
     }
@@ -52,7 +52,7 @@ final class PluralNamingStrategy implements NamingStrategy
     /**
      * @inheritDoc
      */
-    function referenceColumnName()
+    function referenceColumnName(): string
     {
         return $this->original->referenceColumnName();
     }
@@ -60,7 +60,7 @@ final class PluralNamingStrategy implements NamingStrategy
     /**
      * @inheritDoc
      */
-    function joinColumnName($propertyName)
+    function joinColumnName($propertyName): string
     {
         return $this->original->joinColumnName($propertyName);
     }
@@ -68,7 +68,7 @@ final class PluralNamingStrategy implements NamingStrategy
     /**
      * @inheritDoc
      */
-    function joinTableName($sourceEntity, $targetEntity, $propertyName = null)
+    function joinTableName($sourceEntity, $targetEntity, $propertyName = null): string
     {
         return sprintf(
             '%s_x_%s',
@@ -80,7 +80,7 @@ final class PluralNamingStrategy implements NamingStrategy
     /**
      * @inheritDoc
      */
-    function joinKeyColumnName($entityName, $referencedColumnName = null)
+    function joinKeyColumnName($entityName, $referencedColumnName = null): string
     {
         return $this->original->joinKeyColumnName($entityName, $referencedColumnName);
     }
