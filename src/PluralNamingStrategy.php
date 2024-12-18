@@ -27,7 +27,7 @@ final class PluralNamingStrategy implements NamingStrategy
     /**
      * @inheritDoc
      */
-    function classToTableName($className): string
+    function classToTableName(string $className): string
     {
         $original = $this->original->classToTableName($className);
         return $this->inflector->pluralize($original)[0];
@@ -36,7 +36,7 @@ final class PluralNamingStrategy implements NamingStrategy
     /**
      * @inheritDoc
      */
-    function propertyToColumnName($propertyName, $className = null): string
+    function propertyToColumnName(string $propertyName, string $className): string
     {
         return $this->original->propertyToColumnName($propertyName, $className);
     }
@@ -44,7 +44,7 @@ final class PluralNamingStrategy implements NamingStrategy
     /**
      * @inheritDoc
      */
-    function embeddedFieldToColumnName($propertyName, $embeddedColumnName, $className = null, $embeddedClassName = null): string
+    function embeddedFieldToColumnName(string $propertyName, string $embeddedColumnName, string $className, string $embeddedClassName): string
     {
         return $this->original->embeddedFieldToColumnName($propertyName, $embeddedColumnName, $className, $embeddedClassName);
     }
@@ -60,15 +60,15 @@ final class PluralNamingStrategy implements NamingStrategy
     /**
      * @inheritDoc
      */
-    function joinColumnName($propertyName): string
+    function joinColumnName(string $propertyName, string $className): string
     {
-        return $this->original->joinColumnName($propertyName);
+        return $this->original->joinColumnName($propertyName, $className);
     }
 
     /**
      * @inheritDoc
      */
-    function joinTableName($sourceEntity, $targetEntity, $propertyName = null): string
+    function joinTableName(string $sourceEntity, string $targetEntity, string $propertyName): string
     {
         return sprintf(
             '%s_x_%s',
@@ -80,7 +80,7 @@ final class PluralNamingStrategy implements NamingStrategy
     /**
      * @inheritDoc
      */
-    function joinKeyColumnName($entityName, $referencedColumnName = null): string
+    function joinKeyColumnName(string $entityName, ?string $referencedColumnName = null): string
     {
         return $this->original->joinKeyColumnName($entityName, $referencedColumnName);
     }
